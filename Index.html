@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        * {
+            transition: all 0.9s ease-in-out;
+        }
+        body {
+            scroll-behavior: smooth;
+        }
+        .gallery-item {
+            transition: transform 0.9s ease-in-out;
+        }
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        .hero {
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.6s ease, transform 2s ease;
+        }
+        .show-hero {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        #about, #portfolio, #contact {
+            opacity: 1;
+            transform: translateY(20px);
+            transition: opacity 0.9s ease, transform 0.6s ease;
+        }
+        .show-section {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+        #backToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 1000;
+            transition: opacity 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-dark text-white text-center py-4">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#home">My Portfolio</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="hero mt-4">
+            <h1 class="display-4">Welcome to Kundan Tiwari</h1>
+            <h2>Data Analyst</h2>
+            <p>"Turning Data into Decisions"</p>
+            <img src="Kundan_BSDK.png" alt="Profile Image" class="rounded-circle profile-image mt-3">
+        </div>
+    </header>
+
+    <section id="about" class="py-5 text-center">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>I am Kundan Tiwari, a dedicated data analyst...</p>
+        </div>
+    </section>
+
+    <section id="portfolio" class="py-5 text-center">
+        <div class="container">
+            <h2>My Work</h2>
+            <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <div class="gallery-item bg-light p-3 rounded">
+                        <h3>Handwritten Digital Project</h3>
+                        <p>A project that transforms handwritten notes into digital format.</p>
+                        <a href="link-to-project" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="gallery-item bg-light p-3 rounded">
+                        <h3>Cancer Prediction In ML</h3>
+                        <p>This project utilizes machine learning algorithms to predict cancer outcomes...</p>
+                        <a href="link-to-project" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <div class="gallery-item bg-light p-3 rounded">
+                        <h3>SQL INJECTIONS USING BLIND AND SEMI COMBINED UNION PAYLOADS</h3>
+                        <p>A project focusing on SQL injection techniques and security measures.</p>
+                        <a href="link-to-project" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-5 text-center" style="background-color: gray;">
+        <div class="container">
+            <h2 style="color: greenyellow;">Contact Me</h2>
+            <p style="color: greenyellow;">Email: tkundan900@gmail.com</p>
+            <p style="color: greenyellow;">Phone: +91-6204210216</p>
+            <p style="color: greenyellow;">LinkedIn: <a href="https://www.linkedin.com/in/kundan-tiwari" style="color: blue;">linkedin.com/in/kundan-tiwari</a></p>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 Kundan Tiwari. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" onclick="scrollToTop()">Back To Top</button>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Show sections with fade-in effect on page load
+        window.onload = function() {
+            document.querySelector('.hero').classList.add('show-hero');
+            setTimeout(() => {
+                document.querySelectorAll('#about, #portfolio, #contact').forEach(section => {
+                    section.classList.add('show-section');
+                });
+            }, 300);
+        };
+
+        // Show or hide the Back to Top button based on scroll position
+        window.onscroll = function() {
+            const backToTop = document.getElementById('backToTop');
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTop.style.display = "block";
+            } else {
+                backToTop.style.display = "none";
+            }
+        };
+
+        // Scroll smoothly back to the top
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
